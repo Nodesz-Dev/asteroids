@@ -49,6 +49,7 @@ def main():
         for thing in drawable:
             thing.draw(screen)
 
+        # Iterate through all asteroids and check if they have collided with the player
         for thing in asteroids:
             if thing.collisioncheck(player):
                 print("Game Over!")
