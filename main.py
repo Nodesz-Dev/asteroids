@@ -17,6 +17,7 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
 
     # Create and set container variable for all future player objects
     Player.containers = (updatable, drawable)
@@ -27,11 +28,14 @@ def main():
     # Create and set conatiner variable for all future asteroid objects
     Asteroid.containers = (asteroids, updatable, drawable)
 
-    # Create and set container virable for all future asteroid field objects
+    # Create and set container viriable for all future asteroid field objects
     AsteroidField.containers = (updatable)
     # Create and Asteroid Field object
     asteroidfield = AsteroidField()
-    
+
+    # Creat and set container variable for all shots being fired
+    Shot.containers = (shots, updatable, drawable)
+        
     # Game loop
     while True:
         for event in pygame.event.get():
