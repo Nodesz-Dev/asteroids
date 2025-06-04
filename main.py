@@ -1,6 +1,8 @@
 import pygame
 from constants import *
 from player import *
+from asteroid import *
+from asteroidfield import *
 
 def main():
     # initialise pygame and set screen size 
@@ -14,12 +16,21 @@ def main():
     # Create the containers we are using to orgnise objects
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
 
     # Create and set container variable for all future player objects
     Player.containers = (updatable, drawable)
     # Create the players object
     player = Player((SCREEN_WIDTH/2), 
                     (SCREEN_HEIGHT/2))
+    
+    # Create and set conatiner variable for all future asteroid objects
+    Asteroid.containers = (asteroids, updatable, drawable)
+
+    # Create and set container virable for all future asteroid field objects
+    AsteroidField.containers = (updatable)
+    # Create and Asteroid Field object
+    asteroidfield = AsteroidField()
     
     # Game loop
     while True:
