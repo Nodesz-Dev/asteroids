@@ -58,12 +58,18 @@ def main():
             if thing.collisioncheck(player):
                 print("Game Over!")
                 return
+            if not thing.pass_through():
+                for asteroid in asteroids:
+                    if not thing.is_self(asteroid):
+                        if thing.collisioncheck(asteroid) and (thing.radius < asteroid.radius):
+                            thing.split()
             
             # Iterate through all active shots to check if they have collided with asteroids
             for shot in shots:
                 if thing.collisioncheck(shot):
                     shot.kill()
-                    thing.kill()
+                    thing.split()
+
 
         # Apply all drawn objects to screen
         pygame.display.flip()
